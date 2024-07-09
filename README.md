@@ -12,14 +12,14 @@ DisparityMapLib is a Python library for calculating disparity maps using CUDA ac
   - Normalized Cross-Correlation (NCC)
   - Zero-mean Normalized Cross-Correlation (ZNCC)
 
-|SAD|SSD|
+<!-- |SAD|SSD|
 |---|---|
 |<img src="assets/dispariyt_map_sad.png" alt="sad" width="300" height="auto">|<img src="assets/dispariyt_map_ssd.png" alt="ssd" width="300" height="auto">|
 |NCC|ZNCC|
-|<img src="assets/dispariyt_map_ncc.png" alt="ncc" width="300" height="auto">|<img src="assets/dispariyt_map_zncc.png" alt="zncc" width="300" height="auto">|
+|<img src="assets/dispariyt_map_ncc.png" alt="ncc" width="300" height="auto">|<img src="assets/dispariyt_map_zncc.png" alt="zncc" width="300" height="auto">| -->
 
 
-
+<img src="assets/img_dispariyt_map.png" alt="sad" width="100%" height="auto">
 
 
 ## Dependencies

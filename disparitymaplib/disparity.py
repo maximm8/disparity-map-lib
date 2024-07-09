@@ -16,9 +16,7 @@ def calc_cost(left, right, disparity_cost, disparity_range, window_size):
 
     for d in range(disp_min, disp_max):
         right_ = right[y:y+w[0], x-d:x+w[1]-d,:]
-        # cost = cf(left_, right_)
         disparity_cost[y, x, d-disp_min] = cost_func(left_, right_)
-
 
 def max_cost(disparity_cost):
 
@@ -33,7 +31,7 @@ def min_cost(disparity_cost):
     return disparity_map
 
 
-def disparity(img1, img2, disp_range, wind_size, cost, cost_agregator=min_cost, TPB1=16):
+def disparity(img1, img2, disp_range, wind_size, cost, cost_aggregator=min_cost, TPB1=16):
 
     global cost_func
 
@@ -58,7 +56,8 @@ def disparity(img1, img2, disp_range, wind_size, cost, cost_agregator=min_cost, 
 
     # calc disparity map
     disparity_cost = dispg.copy_to_host()
-    disparity_map = cost_agregator(disparity_cost)
+    disparity_map = cost_aggregator(disparity_cost)
+    disparity_cost_min = np.min(disparity_cost, axis=2)
 
     # correct disparity location 
     disparity_map  = np.roll(disparity_map, wind_size2[0], axis=0)

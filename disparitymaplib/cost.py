@@ -21,17 +21,17 @@ def ssd_cuda(left, right):
 
     return cost
 
+# @cuda.jit(device=True)
+# def ssd_cuda(left, right):
+#     cost = 0
+#     for i in range(left.shape[0]):
+#         for j in range(left.shape[1]):
+#             for k in range(left.shape[2]):
+#                 cost += (left[i,j,k]-right[i,j,k])**2
+
+#     return cost
+
 @cuda.jit(device=True)
-def ssd_cuda(left, right):
-    cost = 0
-    for i in range(left.shape[0]):
-        for j in range(left.shape[1]):
-            for k in range(left.shape[2]):
-                cost += (left[i,j,k]-right[i,j,k])**2
-
-    return cost
-
-@njit
 def ncc_cuda(left, right):
 
     cost = 0
@@ -49,15 +49,15 @@ def ncc_cuda(left, right):
 
     return cost
 
-@njit
-def zncc(left, right):
-    lm = left.mean()
-    rm = right.mean()
-    cost = ((left - lm)*(right-rm)).sum()/np.sqrt(((left - lm)**2).sum()*((right - rm)**2).sum())
+# @njit
+# def zncc(left, right):
+#     lm = left.mean()
+#     rm = right.mean()
+#     cost = ((left - lm)*(right-rm)).sum()/np.sqrt(((left - lm)**2).sum()*((right - rm)**2).sum())
 
-    return cost
+#     return cost
 
-@njit
+@cuda.jit(device=True)
 def zncc_cuda(left, right):
 
     lm = 0
